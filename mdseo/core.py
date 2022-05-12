@@ -3,7 +3,7 @@
 __all__ = ['get_meta', 'meta_list', 'find_dupe', 'chk_dupe_title', 'chk_desc', 'chk_img', 'chk_len', 'chk_desc_len']
 
 # Cell
-from fastcore.utils import globtastic, Path, merge, L
+from fastcore.all import globtastic, Path, merge, L
 from fastcore.script import call_parse
 import re
 import yaml
