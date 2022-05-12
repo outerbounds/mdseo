@@ -70,7 +70,7 @@
       --srcdir SRCDIR    directory of files to check (default: .)
 
 
-## Ignore Checks
+## Ignoring Checks
 
 You may wish to ignore checks on individual files, there are two ways to do this (1) Through a special front-matter field called `mdseo-ignore` or (2) by placing the word `mdseo-ignore-all` in your markdown file.
 
