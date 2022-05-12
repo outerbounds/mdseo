@@ -2,6 +2,8 @@
 > Analyze Markdown Documents Used In Static Sites For SEO
 
 
+[![CI](https://github.com/outerbounds/mdseo/actions/workflows/main.yml/badge.svg)](https://github.com/outerbounds/mdseo/actions/workflows/main.yml)
+
 ## Usage
 
 `mdseo` provides CLI tools to check various statistics and metadata in markdown files.  If an unwanted property is discovered, and error is raised.  An overview of the CLI tools are below:
