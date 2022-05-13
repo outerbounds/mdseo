@@ -95,7 +95,7 @@ def _lt_n(d, n):
     return d['n_words'] < n
 
 @call_parse
-def chk_len(n:int, # minimum number of words a document should contain
+def chk_len(n:int=50, # minimum number of words a document should contain
             srcdir:str='.', # directory of files to check
            ):
     "Check if docs contain less than `n` words. Ignore with front matter `mdseo-ignore: [length]`"
