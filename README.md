@@ -78,6 +78,35 @@
       --srcdir SRCDIR    directory of files to check (default: .)
 
 
+```
+!mdseo_slug -h
+```
+
+    usage: mdseo_slug [-h] [--srcdir SRCDIR]
+    
+    Check if docs do not have the field `slug` in their front matter. Ignore with
+    front matter `mdseo-ignore: [slug]`
+    
+    optional arguments:
+      -h, --help       show this help message and exit
+      --srcdir SRCDIR  directory of files to check (default: .)
+
+
+```
+!mdseo_slug_len -h
+```
+
+    usage: mdseo_slug_len [-h] [--srcdir SRCDIR] [--n N]
+    
+    Check if docs have a `slug` field in their front matter that is less than `n`
+    characters. Ignore with front matter `mdseo-ignore: [slug]`
+    
+    optional arguments:
+      -h, --help       show this help message and exit
+      --srcdir SRCDIR  directory of files to check (default: .)
+      --n N            max number of characters for slug (default: 45)
+
+
 ## Ignoring Checks
 
 You may wish to ignore checks on individual files, there are two ways to do this (1) Through a special front-matter field called `mdseo-ignore` or (2) by placing the word `mdseo-ignore-all` in your markdown file.

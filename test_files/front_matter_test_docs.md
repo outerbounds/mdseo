@@ -1,6 +1,6 @@
 ---
 key2: value2
-slug: custom/pathfor/site
+slug: custom/pathfor/site/this-is-waytoolong/wedontwantthis
 key: value
 ---
 <DocSection type="function" name="function_with_pep484_type_annotations" module="test_lib.example" heading_level="3">

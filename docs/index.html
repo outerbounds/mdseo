@@ -213,6 +213,83 @@ optional arguments:
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_slug -h
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>usage: mdseo_slug [-h] [--srcdir SRCDIR]
+
+Check if docs do not have the field `slug` in their front matter. Ignore with
+front matter `mdseo-ignore: [slug]`
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --srcdir SRCDIR  directory of files to check (default: .)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_slug_len -h
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>usage: mdseo_slug_len [-h] [--srcdir SRCDIR] [--n N]
+
+Check if docs have a `slug` field in their front matter that is less than `n`
+characters. Ignore with front matter `mdseo-ignore: [slug]`
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --srcdir SRCDIR  directory of files to check (default: .)
+  --n N            max number of characters for slug (default: 45)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Ignoring-Checks">Ignoring Checks<a class="anchor-link" href="#Ignoring-Checks"> </a></h2><p>You may wish to ignore checks on individual files, there are two ways to do this (1) Through a special front-matter field called <code>mdseo-ignore</code> or (2) by placing the word <code>mdseo-ignore-all</code> in your markdown file.</p>
