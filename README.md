@@ -117,6 +117,20 @@
       --n N            max number of characters for slug (default: 45)
 
 
+```
+!mdseo_author -h
+```
+
+    usage: mdseo_author [-h] [--srcdir SRCDIR]
+    
+    Check if docs do not have the field `authors` in their front matter. Ignore with
+    front matter `mdseo-ignore: [authors]`
+    
+    optional arguments:
+      -h, --help       show this help message and exit
+      --srcdir SRCDIR  directory of files to check (default: .)
+
+
 ## Ignoring Checks
 
 You may wish to ignore checks on individual files, there are two ways to do this (1) Through a special front-matter field called `mdseo-ignore` or (2) by placing the word `mdseo-ignore-all` in your markdown file.

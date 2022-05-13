@@ -10,6 +10,7 @@ index = {"get_meta": "core.ipynb",
          "chk_slug": "core.ipynb",
          "chk_slug_len": "core.ipynb",
          "chk_img": "core.ipynb",
+         "chk_author": "core.ipynb",
          "chk_len": "core.ipynb",
          "chk_desc_len": "core.ipynb"}
 
