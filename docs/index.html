@@ -37,6 +37,7 @@ nb_path: "index.ipynb"
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h2><ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
+<li><a href="#examples">Examples</a></li>
 <li><a href="#ignoring-checks">Ignoring Checks</a><ul>
 <li><a href="#with-front-matter">With Front Matter</a></li>
 <li><a href="#with-the-keyword-mdseo-ignore-all">With The Keyword <code>mdseo-ignore-all</code></a></li>
@@ -107,44 +108,6 @@ optional arguments:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_img -h
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_img [-h] [--srcdir SRCDIR]
-
-Check if docs do not have the field `image` in their front matter. Ignore with
-front matter `mdseo-ignore: [image]`
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --srcdir SRCDIR  directory of files to check (default: .)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_len -h
 </pre></div>
 
@@ -158,17 +121,61 @@ optional arguments:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_len [-h] [--srcdir SRCDIR] n
+<pre>usage: mdseo_len [-h] [--n N] [--srcdir SRCDIR]
 
 Check if docs contain less than `n` words. Ignore with front matter `mdseo-
 ignore: [length]`
 
+optional arguments:
+  -h, --help       show this help message and exit
+  --n N            minimum number of words a document should contain (default:
+                   50)
+  --srcdir SRCDIR  directory of files to check (default: .)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_chk_fm -h
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>usage: mdseo_chk_fm [-h] [--srcdir SRCDIR] [--minlen MINLEN] [--maxlen MAXLEN]
+                    {description,slug,image,authors}
+
+Check front matter for various rules.
+
 positional arguments:
-  n                minimum number of words a document should contain
+  {description,slug,image,authors}  front matter field to check
 
 optional arguments:
-  -h, --help       show this help message and exit
-  --srcdir SRCDIR  directory of files to check (default: .)
+  -h, --help                        show this help message and exit
+  --srcdir SRCDIR                   directory of files to check (default: .)
+  --minlen MINLEN                   the minimum character length allowed for the
+                                    field
+  --maxlen MAXLEN                   the maximum character length allowed for the
+                                    field
 </pre>
 </div>
 </div>
@@ -179,6 +186,19 @@ optional arguments:
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples">Examples<a class="anchor-link" href="#Examples"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Check that <code>description</code> is between 50 and 300 characters:</strong></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -186,7 +206,7 @@ optional arguments:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_desc_len -h
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_chk_fm description --minlen <span class="m">50</span> --maxlen <span class="m">300</span>
 </pre></div>
 
     </div>
@@ -199,19 +219,17 @@ optional arguments:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_desc_len [-h] [--n_lower N_LOWER] [--n_upper N_UPPER]
-                      [--srcdir SRCDIR]
-
-Check if docs have a description that is not between `n_lower` and `n_upper`
-characters. Ignore with front matter `mdseo-ignore: [description]`
-
-optional arguments:
-  -h, --help         show this help message and exit
-  --n_lower N_LOWER  the lower bound number of characters a document should
-                     contain (default: 50)
-  --n_upper N_UPPER  the upper bound number of characters a document should
-                     contain (default: 300)
-  --srcdir SRCDIR    directory of files to check (default: .)
+<pre>Traceback (most recent call last):
+  File &#34;/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm&#34;, line 33, in &lt;module&gt;
+    sys.exit(load_entry_point(&#39;mdseo&#39;, &#39;console_scripts&#39;, &#39;mdseo_chk_fm&#39;)())
+  File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
+    tfunc(**merge(args, args_from_prog(func, xtra)))
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 101, in chk_fm
+    return _checker(partial(_min_len_err, key=key, n=minlen),
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
+    if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
+Exception: The following files have description in their front matter that is less than 50 characters:
+	./test_files/front_matter3.md
 </pre>
 </div>
 </div>
@@ -222,6 +240,13 @@ optional arguments:
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Check that the front matter <code>slug</code> exists:</strong></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -229,7 +254,7 @@ optional arguments:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_slug -h
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_chk_fm slug
 </pre></div>
 
     </div>
@@ -242,14 +267,20 @@ optional arguments:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_slug [-h] [--srcdir SRCDIR]
-
-Check if docs do not have the field `slug` in their front matter. Ignore with
-front matter `mdseo-ignore: [slug]`
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --srcdir SRCDIR  directory of files to check (default: .)
+<pre>Traceback (most recent call last):
+  File &#34;/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm&#34;, line 33, in &lt;module&gt;
+    sys.exit(load_entry_point(&#39;mdseo&#39;, &#39;console_scripts&#39;, &#39;mdseo_chk_fm&#39;)())
+  File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
+    tfunc(**merge(args, args_from_prog(func, xtra)))
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 107, in chk_fm
+    else: _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
+    if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
+Exception: The following files do not have the field `slug` in their front matter:
+	./CONTRIBUTING.md
+	./test_files/false_fm2.md
+	./test_files/false_fm.md
+	./test_files/test_docs.md
 </pre>
 </div>
 </div>
@@ -260,6 +291,13 @@ optional arguments:
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Check that the front matter <code>slug</code> is no longer than 45 characters:</strong></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -267,7 +305,7 @@ optional arguments:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_slug_len -h
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_chk_fm slug --maxlen <span class="m">45</span>
 </pre></div>
 
     </div>
@@ -280,15 +318,17 @@ optional arguments:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_slug_len [-h] [--srcdir SRCDIR] [--n N]
-
-Check if docs have a `slug` field in their front matter that is less than `n`
-characters. Ignore with front matter `mdseo-ignore: [slug]`
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --srcdir SRCDIR  directory of files to check (default: .)
-  --n N            max number of characters for slug (default: 45)
+<pre>Traceback (most recent call last):
+  File &#34;/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm&#34;, line 33, in &lt;module&gt;
+    sys.exit(load_entry_point(&#39;mdseo&#39;, &#39;console_scripts&#39;, &#39;mdseo_chk_fm&#39;)())
+  File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
+    tfunc(**merge(args, args_from_prog(func, xtra)))
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 104, in chk_fm
+    return _checker(partial(_max_len_err, key=key, n=maxlen),
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
+    if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
+Exception: The following files have slug in their front matter that is greater than 45 characters:
+	./test_files/front_matter_test_docs.md
 </pre>
 </div>
 </div>
@@ -299,6 +339,13 @@ optional arguments:
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Check that the front matter <code>authors</code> exists:</strong></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -306,7 +353,7 @@ optional arguments:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_author -h
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mdseo_chk_fm authors
 </pre></div>
 
     </div>
@@ -319,14 +366,22 @@ optional arguments:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: mdseo_author [-h] [--srcdir SRCDIR]
-
-Check if docs do not have the field `authors` in their front matter. Ignore with
-front matter `mdseo-ignore: [authors]`
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --srcdir SRCDIR  directory of files to check (default: .)
+<pre>Traceback (most recent call last):
+  File &#34;/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm&#34;, line 33, in &lt;module&gt;
+    sys.exit(load_entry_point(&#39;mdseo&#39;, &#39;console_scripts&#39;, &#39;mdseo_chk_fm&#39;)())
+  File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
+    tfunc(**merge(args, args_from_prog(func, xtra)))
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 107, in chk_fm
+    else: _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
+  File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
+    if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
+Exception: The following files do not have the field `authors` in their front matter:
+	./CONTRIBUTING.md
+	./test_files/front_matter2.md
+	./test_files/false_fm2.md
+	./test_files/front_matter_test_docs.md
+	./test_files/false_fm.md
+	./test_files/test_docs.md
 </pre>
 </div>
 </div>

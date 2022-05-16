@@ -11,6 +11,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 - [Ignoring Checks](#ignoring-checks)
     - [With Front Matter](#with-front-matter)
     - [With The Keyword `mdseo-ignore-all`](#with-the-keyword-mdseo-ignore-all)
@@ -39,96 +40,126 @@
 
 
 ```
-!mdseo_img -h
-```
-
-    usage: mdseo_img [-h] [--srcdir SRCDIR]
-    
-    Check if docs do not have the field `image` in their front matter. Ignore with
-    front matter `mdseo-ignore: [image]`
-    
-    optional arguments:
-      -h, --help       show this help message and exit
-      --srcdir SRCDIR  directory of files to check (default: .)
-
-
-```
 !mdseo_len -h
 ```
 
-    usage: mdseo_len [-h] [--srcdir SRCDIR] n
+    usage: mdseo_len [-h] [--n N] [--srcdir SRCDIR]
     
     Check if docs contain less than `n` words. Ignore with front matter `mdseo-
     ignore: [length]`
     
+    optional arguments:
+      -h, --help       show this help message and exit
+      --n N            minimum number of words a document should contain (default:
+                       50)
+      --srcdir SRCDIR  directory of files to check (default: .)
+
+
+```
+!mdseo_chk_fm -h
+```
+
+    usage: mdseo_chk_fm [-h] [--srcdir SRCDIR] [--minlen MINLEN] [--maxlen MAXLEN]
+                        {description,slug,image,authors}
+    
+    Check front matter for various rules.
+    
     positional arguments:
-      n                minimum number of words a document should contain
+      {description,slug,image,authors}  front matter field to check
     
     optional arguments:
-      -h, --help       show this help message and exit
-      --srcdir SRCDIR  directory of files to check (default: .)
+      -h, --help                        show this help message and exit
+      --srcdir SRCDIR                   directory of files to check (default: .)
+      --minlen MINLEN                   the minimum character length allowed for the
+                                        field
+      --maxlen MAXLEN                   the maximum character length allowed for the
+                                        field
 
 
-```
-!mdseo_desc_len -h
-```
+## Examples
 
-    usage: mdseo_desc_len [-h] [--n_lower N_LOWER] [--n_upper N_UPPER]
-                          [--srcdir SRCDIR]
-    
-    Check if docs have a description that is not between `n_lower` and `n_upper`
-    characters. Ignore with front matter `mdseo-ignore: [description]`
-    
-    optional arguments:
-      -h, --help         show this help message and exit
-      --n_lower N_LOWER  the lower bound number of characters a document should
-                         contain (default: 50)
-      --n_upper N_UPPER  the upper bound number of characters a document should
-                         contain (default: 300)
-      --srcdir SRCDIR    directory of files to check (default: .)
-
+**Check that `description` is between 50 and 300 characters:**
 
 ```
-!mdseo_slug -h
+!mdseo_chk_fm description --minlen 50 --maxlen 300
 ```
 
-    usage: mdseo_slug [-h] [--srcdir SRCDIR]
-    
-    Check if docs do not have the field `slug` in their front matter. Ignore with
-    front matter `mdseo-ignore: [slug]`
-    
-    optional arguments:
-      -h, --help       show this help message and exit
-      --srcdir SRCDIR  directory of files to check (default: .)
+    Traceback (most recent call last):
+      File "/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm", line 33, in <module>
+        sys.exit(load_entry_point('mdseo', 'console_scripts', 'mdseo_chk_fm')())
+      File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
+        tfunc(**merge(args, args_from_prog(func, xtra)))
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 101, in chk_fm
+        return _checker(partial(_min_len_err, key=key, n=minlen),
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
+        if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
+    Exception: The following files have description in their front matter that is less than 50 characters:
+    	./test_files/front_matter3.md
 
 
-```
-!mdseo_slug_len -h
-```
-
-    usage: mdseo_slug_len [-h] [--srcdir SRCDIR] [--n N]
-    
-    Check if docs have a `slug` field in their front matter that is less than `n`
-    characters. Ignore with front matter `mdseo-ignore: [slug]`
-    
-    optional arguments:
-      -h, --help       show this help message and exit
-      --srcdir SRCDIR  directory of files to check (default: .)
-      --n N            max number of characters for slug (default: 45)
-
+**Check that the front matter `slug` exists:**
 
 ```
-!mdseo_author -h
+!mdseo_chk_fm slug
 ```
 
-    usage: mdseo_author [-h] [--srcdir SRCDIR]
-    
-    Check if docs do not have the field `authors` in their front matter. Ignore with
-    front matter `mdseo-ignore: [authors]`
-    
-    optional arguments:
-      -h, --help       show this help message and exit
-      --srcdir SRCDIR  directory of files to check (default: .)
+    Traceback (most recent call last):
+      File "/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm", line 33, in <module>
+        sys.exit(load_entry_point('mdseo', 'console_scripts', 'mdseo_chk_fm')())
+      File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
+        tfunc(**merge(args, args_from_prog(func, xtra)))
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 107, in chk_fm
+        else: _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
+        if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
+    Exception: The following files do not have the field `slug` in their front matter:
+    	./CONTRIBUTING.md
+    	./test_files/false_fm2.md
+    	./test_files/false_fm.md
+    	./test_files/test_docs.md
+
+
+**Check that the front matter `slug` is no longer than 45 characters:**
+
+```
+!mdseo_chk_fm slug --maxlen 45
+```
+
+    Traceback (most recent call last):
+      File "/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm", line 33, in <module>
+        sys.exit(load_entry_point('mdseo', 'console_scripts', 'mdseo_chk_fm')())
+      File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
+        tfunc(**merge(args, args_from_prog(func, xtra)))
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 104, in chk_fm
+        return _checker(partial(_max_len_err, key=key, n=maxlen),
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
+        if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
+    Exception: The following files have slug in their front matter that is greater than 45 characters:
+    	./test_files/front_matter_test_docs.md
+
+
+**Check that the front matter `authors` exists:**
+
+```
+!mdseo_chk_fm authors
+```
+
+    Traceback (most recent call last):
+      File "/Users/hamel/opt/anaconda3/bin/mdseo_chk_fm", line 33, in <module>
+        sys.exit(load_entry_point('mdseo', 'console_scripts', 'mdseo_chk_fm')())
+      File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
+        tfunc(**merge(args, args_from_prog(func, xtra)))
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 107, in chk_fm
+        else: _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
+      File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
+        if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
+    Exception: The following files do not have the field `authors` in their front matter:
+    	./CONTRIBUTING.md
+    	./test_files/front_matter2.md
+    	./test_files/false_fm2.md
+    	./test_files/front_matter_test_docs.md
+    	./test_files/false_fm.md
+    	./test_files/test_docs.md
 
 
 ## Ignoring Checks

@@ -3,7 +3,7 @@ key2: value2
 slug: custom/pathfor/site
 key: value
 title: a title is here
-mdseo-ignore: [title, body, slug, desc]
+mdseo-ignore: [title, body, desc]
 ---
 <DocSection type="function" name="function_with_pep484_type_annotations" module="test_lib.example" heading_level="3">
 <SigArgSection>
