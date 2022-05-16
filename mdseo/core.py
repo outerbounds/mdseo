@@ -77,11 +77,11 @@ def _missing_fm(d, key):
 # Cell
 def _min_len_err(d, key, n):
     if _intersect(d, key): return False
-    else: return key in d and len(d['key']) < n # return true if it is less than n length
+    else: return key in d and len(d[key]) < n # return true if it is less than n length
 
 def _max_len_err(d, key, n):
     if _intersect(d, key): return False
-    else: return key in d  and len(d.get(key, '')) > n #return true if greater than n length
+    else: return key in d and len(d[key]) > n #return true if greater than n length
 
 def _checker(func, msg:str, srcdir:str):
     fnames = meta_list(srcdir).filter(func).attrgot('fname')
