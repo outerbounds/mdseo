@@ -6,13 +6,9 @@ index = {"get_meta": "core.ipynb",
          "meta_list": "core.ipynb",
          "find_dupe": "core.ipynb",
          "chk_dupe_title": "core.ipynb",
-         "chk_desc": "core.ipynb",
-         "chk_slug": "core.ipynb",
-         "chk_slug_len": "core.ipynb",
-         "chk_img": "core.ipynb",
-         "chk_author": "core.ipynb",
-         "chk_len": "core.ipynb",
-         "chk_desc_len": "core.ipynb"}
+         "fm_map": "core.ipynb",
+         "chk_fm": "core.ipynb",
+         "chk_len": "core.ipynb"}
 
 modules = ["core.py"]
 
