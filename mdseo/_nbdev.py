@@ -6,7 +6,7 @@ index = {"get_meta": "core.ipynb",
          "meta_list": "core.ipynb",
          "find_dupe": "core.ipynb",
          "chk_dupe_title": "core.ipynb",
-         "fm_map": "core.ipynb",
+         "alias_map": "core.ipynb",
          "chk_fm": "core.ipynb",
          "chk_len": "core.ipynb"}
 

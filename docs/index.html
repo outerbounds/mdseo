@@ -228,7 +228,7 @@ optional arguments:
     return _checker(partial(_min_len_err, key=key, n=minlen),
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
     if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
-Exception: The following files have description in their front matter that is less than 50 characters:
+Exception: The following files have the field `description` in their front matter that is less than 50 characters:
 	./test_files/front_matter3.md
 </pre>
 </div>
@@ -273,7 +273,7 @@ Exception: The following files have description in their front matter that is le
   File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
     tfunc(**merge(args, args_from_prog(func, xtra)))
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 107, in chk_fm
-    else: _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
+    _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
     if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
 Exception: The following files do not have the field `slug` in their front matter:
@@ -327,7 +327,7 @@ Exception: The following files do not have the field `slug` in their front matte
     return _checker(partial(_max_len_err, key=key, n=maxlen),
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
     if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
-Exception: The following files have slug in their front matter that is greater than 45 characters:
+Exception: The following files have the field `slug` in their front matter that is greater than 45 characters:
 	./test_files/front_matter_test_docs.md
 </pre>
 </div>
@@ -372,7 +372,7 @@ Exception: The following files have slug in their front matter that is greater t
   File &#34;/Users/hamel/github/fastcore/fastcore/script.py&#34;, line 113, in _f
     tfunc(**merge(args, args_from_prog(func, xtra)))
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 107, in chk_fm
-    else: _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
+    _checker(partial(_missing_fm, key=key), f&#34;do not have the field `{key}` in their front matter&#34;, srcdir)
   File &#34;/Users/hamel/github/mdseo/mdseo/core.py&#34;, line 89, in _checker
     if fnames: raise Exception(f&#34;The following files {msg}:\n\t{files}&#34;)
 Exception: The following files do not have the field `authors` in their front matter:

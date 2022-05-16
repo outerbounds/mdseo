@@ -93,7 +93,7 @@
         return _checker(partial(_min_len_err, key=key, n=minlen),
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
         if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
-    Exception: The following files have description in their front matter that is less than 50 characters:
+    Exception: The following files have the field `description` in their front matter that is less than 50 characters:
     	./test_files/front_matter3.md
 
 
@@ -109,7 +109,7 @@
       File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
         tfunc(**merge(args, args_from_prog(func, xtra)))
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 107, in chk_fm
-        else: _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
+        _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
         if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
     Exception: The following files do not have the field `slug` in their front matter:
@@ -134,7 +134,7 @@
         return _checker(partial(_max_len_err, key=key, n=maxlen),
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
         if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
-    Exception: The following files have slug in their front matter that is greater than 45 characters:
+    Exception: The following files have the field `slug` in their front matter that is greater than 45 characters:
     	./test_files/front_matter_test_docs.md
 
 
@@ -150,7 +150,7 @@
       File "/Users/hamel/github/fastcore/fastcore/script.py", line 113, in _f
         tfunc(**merge(args, args_from_prog(func, xtra)))
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 107, in chk_fm
-        else: _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
+        _checker(partial(_missing_fm, key=key), f"do not have the field `{key}` in their front matter", srcdir)
       File "/Users/hamel/github/mdseo/mdseo/core.py", line 89, in _checker
         if fnames: raise Exception(f"The following files {msg}:\n\t{files}")
     Exception: The following files do not have the field `authors` in their front matter:
