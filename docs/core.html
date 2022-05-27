@@ -302,14 +302,17 @@ nb_path: "core.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;slug&quot;</span>
-<span class="n">maxlen</span> <span class="o">=</span> <span class="mi">60</span>
-<span class="n">srcdir</span> <span class="o">=</span> <span class="s2">&quot;/Users/eddie/Dev/outerbounds-docs/docs&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="c1">#this is in mdeseo-ignore so rule is ignored</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># this key doesn&#39;t exist</span>
 
-<span class="n">_checker</span><span class="p">(</span>
-    <span class="n">partial</span><span class="p">(</span><span class="n">_max_len_err</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">maxlen</span><span class="p">),</span> 
-    <span class="sa">f</span><span class="s2">&quot;have the field `</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">` in their front matter that is greater than </span><span class="si">{</span><span class="n">maxlen</span><span class="si">}</span><span class="s2"> characters&quot;</span><span class="p">,</span> <span class="n">srcdir</span>
-<span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">[</span><span class="s1">&#39;slug&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">19</span>
+
+<span class="k">assert</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="c1"># 50 &gt; 5</span>
+<span class="k">assert</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># 19 &gt; 5</span>
+
+
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">39</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -326,16 +329,7 @@ nb_path: "core.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="c1">#this is in mdeseo-ignore so rule is ignored</span>
-<span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># this key doesn&#39;t exist</span>
-
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">[</span><span class="s1">&#39;slug&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">19</span>
-
-<span class="k">assert</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="c1"># 50 &gt; 5</span>
-<span class="k">assert</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># 19 &gt; 5</span>
-
-
-<span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">assert</span> <span class="ow">not</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="mi">39</span><span class="p">)</span>
 
 <span class="n">_test_ignore_short_slug_fm</span> <span class="o">=</span> <span class="n">get_meta</span><span class="p">(</span><span class="s1">&#39;test_files/front_matter_ignore_short_slug.md&#39;</span><span class="p">)</span>
@@ -352,6 +346,36 @@ nb_path: "core.ipynb"
 <span class="k">assert</span> <span class="ow">not</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_ignore_long_slug_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">_test_ignore_long_slug_fm</span><span class="p">[</span><span class="s1">&#39;mdseo-ignore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">assert</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_ignore_long_slug_fm</span><span class="p">,</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_test_ignore_short_desc_fm</span> <span class="o">=</span> <span class="n">get_meta</span><span class="p">(</span><span class="s1">&#39;test_files/front_matter_ignore_short_desc.md&#39;</span><span class="p">)</span>
+<span class="n">_test_ignore_long_desc_fm</span> <span class="o">=</span> <span class="n">get_meta</span><span class="p">(</span><span class="s1">&#39;test_files/front_matter_ignore_long_desc.md&#39;</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">_test_ignore_short_desc_fm</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">n</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_ignore_short_desc_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">_test_ignore_short_desc_fm</span><span class="p">[</span><span class="s1">&#39;mdseo-ignore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">_min_len_err</span><span class="p">(</span><span class="n">_test_ignore_short_desc_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">_test_ignore_long_desc_fm</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">n</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_ignore_long_desc_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">_test_ignore_long_desc_fm</span><span class="p">[</span><span class="s1">&#39;mdseo-ignore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">_max_len_err</span><span class="p">(</span><span class="n">_test_ignore_long_desc_fm</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 
     </div>
