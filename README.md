@@ -25,7 +25,7 @@
 
 `mdseo` provides CLI tools to check various statistics and metadata in markdown files.  If an unwanted property is discovered, and error is raised.  An overview of the CLI tools are below:
 
-```
+```python
 !mdseo_dupe_title -h
 ```
 
@@ -39,7 +39,7 @@
       --srcdir SRCDIR  directory of files to check (default: .)
 
 
-```
+```python
 !mdseo_len -h
 ```
 
@@ -55,7 +55,7 @@
       --srcdir SRCDIR  directory of files to check (default: .)
 
 
-```
+```python
 !mdseo_chk_fm -h
 ```
 
@@ -80,7 +80,7 @@
 
 **Check that `description` is between 50 and 300 characters:**
 
-```
+```python
 !mdseo_chk_fm description --minlen 50 --maxlen 300
 ```
 
@@ -99,7 +99,7 @@
 
 **Check that the front matter `slug` exists:**
 
-```
+```python
 !mdseo_chk_fm slug
 ```
 
@@ -121,7 +121,7 @@
 
 **Check that the front matter `slug` is no longer than 45 characters:**
 
-```
+```python
 !mdseo_chk_fm slug --maxlen 45
 ```
 
@@ -140,7 +140,7 @@
 
 **Check that the front matter `authors` exists:**
 
-```
+```python
 !mdseo_chk_fm authors
 ```
 
@@ -190,6 +190,29 @@ mdseo-ignore: all
 ---
 ```
 
+There is a generic function `mdseo_chk_fm` that checks the presence, min length and max length of a front matter field.  You can ignore any checks conducted by this function by passing in the appropriate fields to `mdseo-ignore`.  These are the fields that you can ignore:
+
+
+
+
+`description`, `slug`, `image`, `authors`
+
+
+
+For example, if you wanted to ingore all of these fields you could put the following in your front matter:
+
+
+
+
+```
+---
+mdseo-ignore: [description,slug,image,authors]
+---
+```
+
+
+
+
 ### With The Keyword `mdseo-ignore-all`
 
 Some markdown files may not have front matter, or it may not be appropriate to add front matter to a file.  In this case you can place the text `mdseo-ignore-all` anywhere in the file and all checks will be ignored, the most common way to add this keyword is with a markdown comment:
@@ -197,4 +220,3 @@ Some markdown files may not have front matter, or it may not be appropriate to a
 ```
 <-- mdseo-ignore-all -->
 ```
-

@@ -95,7 +95,7 @@ def chk_fm(key:_en, # front matter field to check
            minlen:int=None, #the minimum character length allowed for the field
            maxlen:int=None  #the maximum character length allowed for the field
           ):
-    "Check front matter for various rules."
+    "Check front matter for various rules. Ignore by setting front matter `mdseo-ignore` with the appropriate fields, for example `mdseo-ignore: ['slug']"
     if not hasattr(_en, key): raise Exception(f'No rule exists for {key}')
     if minlen:
         return _checker(partial(_min_len_err, key=key, n=minlen),

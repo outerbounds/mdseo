@@ -408,6 +408,69 @@ mdseo-ignore: [dupe_title, image]
 <pre><code>---
 mdseo-ignore: all
 ---</code></pre>
+<p>There is a generic function <code>mdseo_chk_fm</code> that checks the presence, min length and max length of a front matter field.  You can ignore any checks conducted by this function by passing in the appropriate fields to <code>mdseo-ignore</code>.  These are the fields that you can ignore:</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+<p><code>description</code>, <code>slug</code>, <code>image</code>, <code>authors</code></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, if you wanted to ingore all of these fields you could put the following in your front matter:</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea output_execute_result">
+
+<pre><code>---
+mdseo-ignore: [description,slug,image,authors]
+---</code></pre>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="With-The-Keyword-mdseo-ignore-all">With The Keyword <code>mdseo-ignore-all</code><a class="anchor-link" href="#With-The-Keyword-mdseo-ignore-all"> </a></h3><p>Some markdown files may not have front matter, or it may not be appropriate to add front matter to a file.  In this case you can place the text <code>mdseo-ignore-all</code> anywhere in the file and all checks will be ignored, the most common way to add this keyword is with a markdown comment:</p>
 
 <pre><code>&lt;-- mdseo-ignore-all --&gt;</code></pre>
