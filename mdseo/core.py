@@ -77,11 +77,13 @@ def _missing_fm(d, key):
 # Cell
 def _min_len_err(d, key, n):
     if _intersect(d, key): return False
-    else: return key in d and len(d[key]) < n # return true if it is less than n length
+    # Return true if it is less than n length. Ignore with front matter `mdseo-ignore: [chk_fm slug]`.
+    else: return key in d and not f"chk_fm {key}" in d["mdseo-ignore"] and len(d[key]) < n
 
 def _max_len_err(d, key, n):
     if _intersect(d, key): return False
-    else: return key in d and len(d[key]) > n #return true if greater than n length
+    # Return true if greater than n length. Ignore with front matter `mdseo-ignore: [chk_fm slug]`.
+    else: return key in d and not f"chk_fm {key}" in d["mdseo-ignore"] and len(d[key]) > n
 
 def _checker(func, msg:str, srcdir:str):
     fnames = meta_list(srcdir).filter(func).attrgot('fname')
@@ -95,7 +97,11 @@ def chk_fm(key:_en, # front matter field to check
            minlen:int=None, #the minimum character length allowed for the field
            maxlen:int=None  #the maximum character length allowed for the field
           ):
-    "Check front matter for various rules."
+    '''
+    Check front matter for various rules.
+    Ignore with front matter `mdseo-ignore: [chk_fm <key>]` - e.g. `mdseo-ignore: [chk_fm slug]`.
+        Filtering happens in `_max_len_err` and `_min_len_err`.
+    '''
     if not hasattr(_en, key): raise Exception(f'No rule exists for {key}')
     if minlen:
         return _checker(partial(_min_len_err, key=key, n=minlen),
